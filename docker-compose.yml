@@ -1,6 +1,6 @@
-version: "3"
+version: "2.1"
 services: 
-  benchmark-api1:
+  web1:
     ports:
       - "8081:8080"
     build: 
@@ -8,8 +8,10 @@ services:
       dockerfile: Dockerfile
     networks: 
       - benchmark
+    cpu_shares: 8
+    mem_limit: 128M
 
-  benchmark-api2:
+  web2:
     ports:
       - "8082:8080"
     build: 
@@ -17,14 +19,16 @@ services:
       dockerfile: Dockerfile
     networks: 
       - benchmark
+    cpu_shares: 8
+    mem_limit: 128M
 
   proxy:
     build: 
       context: ./haproxy
       dockerfile: Dockerfile
     depends_on: 
-      - benchmark-api1
-      - benchmark-api2
+      - web1
+      - web2
     ports:
       - '80:80'
     networks: 
