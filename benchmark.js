@@ -6,13 +6,14 @@ var services = {
  
 var routes = {
   "getNormal": "normal",
-  "getGoroutine": "goroutine"
+  "getGoroutine": "goroutine",
+  "getChannel": "gochannels"
 };
  
 var options = { 
-    "minSamples": 20000,
+    "minSamples": 200000,
     "runMode": "parallel",
-    "maxConcurrentRequests": 100,
+    "maxConcurrentRequests": 1000,
     "stopOnError": false
 };
  
