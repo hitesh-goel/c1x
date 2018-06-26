@@ -36,7 +36,7 @@ func main() {
 	server.GET("/v1/gochannels", GoChannelGetHandler)
 
 	//Start a channel worker
-	Worker(ch)
+	go Worker(ch)
 
 	// Start http server Listen to port 8080
 	log.Fatal(http.ListenAndServe(":8080", server))

@@ -11,13 +11,13 @@ var routes = {
 };
  
 var options = { 
-    "minSamples": 200000,
+    "minSamples": 100000,
     "runMode": "parallel",
-    "maxConcurrentRequests": 1000,
+    "maxConcurrentRequests": 5000,
     "stopOnError": false
 };
  
-apiBenchmark.compare(services, routes, options, function(err, results){
+apiBenchmark.measure(services, routes, options, function(err, results){
     apiBenchmark.getHtml(results, function(error, html) {
     console.log(html);
   });
